@@ -1,0 +1,13 @@
+torch>=2.2.0
+numpy>=1.26.0
+pandas>=2.2.0
+scikit-learn>=1.4.0
+yfinance>=0.2.36
+PyYAML>=6.0.1
+matplotlib>=3.8.0
+seaborn>=0.13.0
+psutil>=5.9.0
+wandb>=0.16.0
+onnx>=1.15.0
+onnxruntime-gpu>=1.17.0
+nvidia-ml-py>=12.535.133

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments and local secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and caches
+*.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# Experiment tracking
+wandb/
+
+# Local datasets and generated artifacts
+data/raw/
+data/processed/
+checkpoints/
+results/runs/
+results/raw/
+results/tables/
+results/figures/
+
+# Model export artifacts
+*.onnx
+*.engine
+*.pt
+*.pth
+*.ckpt

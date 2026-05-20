@@ -1,0 +1,61 @@
+dataset:
+  source: yfinance
+  tickers: [AAPL, ^NSEI, CQQQ, SPY, QQQ]
+  start_date: '2018-01-01'
+  end_date: null
+  features: [Open, High, Low, Close, Volume]
+  target: Close
+  lookback_window: 252
+  forecast_horizon: 21
+  train_split: 0.8
+
+models:
+  enabled: [lstm, transformer, tiny_time_mixer, informer]
+  checkpoint_dir: checkpoints
+  train_if_missing: true
+  train_epochs: 3
+  hidden_size: 64
+
+backends:
+  enabled: [pytorch]
+  require_all_available: true
+  allow_fallback: false
+
+hardware:
+  require_cuda: true
+  allow_cpu_fallback: false
+
+precisions:
+  enabled: [fp32, fp16]
+  allow_precision_fallback: false
+
+batch_sizes: [1, 8, 32]
+
+attention:
+  require_flash_when_configured: false
+
+benchmark:
+  mode: paper
+  warmup_iters: 20
+  timed_iters: 100
+  repeat_configs: 3
+  clear_gpu_cache_between_runs: true
+  reset_memory_stats_between_runs: true
+  run_each_config_in_subprocess: true
+  save_raw_results: true
+  fail_fast: true
+  seed: 42
+
+tracking:
+  local:
+    enabled: true
+    results_dir: results
+  wandb:
+    enabled: false
+    project: financial-transformer-inference
+    entity: null
+    mode: online
+    require_login: true
+    group_by: benchmark_run
+    log_artifacts: true
+    log_plots: true
