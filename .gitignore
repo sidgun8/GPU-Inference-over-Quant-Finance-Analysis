@@ -35,6 +35,7 @@ htmlcov/
 
 # Experiment tracking
 wandb/
+wandb-old/
 
 # Local datasets and generated artifacts
 data/raw/
@@ -44,6 +45,12 @@ results/runs/
 results/raw/
 results/tables/
 results/figures/
+
+# W&B export CSV files (large)
+wandb_export_*.csv
+
+# Paper PDF output
+*.pdf
 
 # Model export artifacts
 *.onnx

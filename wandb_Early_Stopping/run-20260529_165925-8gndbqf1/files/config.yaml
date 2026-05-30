@@ -1,0 +1,204 @@
+_wandb:
+    value:
+        cli_version: 0.27.0
+        e:
+            959e1iy35b349bttevcgk25428hx7vv6:
+                args:
+                    - --config
+                    - configs/benchmark.yaml
+                    - --wandb
+                email: siddharthsrinivasan2002@gmail.com
+                executable: C:\Users\sidsr\GPUs for Financial Engineering\.venv\Scripts\python.exe
+                git:
+                    commit: 7edd9ffdacb941521be32a13ae8a79910435843b
+                host: Omen
+                os: Windows-11-10.0.26200-SP0
+                program: -m src.benchmarks.run_all
+                python: CPython 3.12.10
+                root: C:\Users\sidsr\GPUs for Financial Engineering
+                startedAt: "2026-05-29T11:29:25.492854Z"
+                writerId: 959e1iy35b349bttevcgk25428hx7vv6
+        m: []
+        python_version: 3.12.10
+        t:
+            "1":
+                - 1
+                - 5
+                - 53
+            "2":
+                - 1
+                - 5
+                - 53
+            "3":
+                - 2
+                - 13
+                - 16
+            "4": 3.12.10
+            "5": 0.27.0
+            "8":
+                - 3
+            "10":
+                - 20
+            "12": 0.27.0
+            "13": windows-amd64
+accuracy_eval_samples:
+    value: 12933
+backend:
+    value: pytorch
+batch_size:
+    value: 8
+best_epoch:
+    value: 1
+best_val_loss:
+    value: 5.1595693355032965
+checkpoint_loaded:
+    value: true
+checkpoint_path:
+    value: checkpoints\informer_lb252_h21_in5_e30_2a00fcb3a7.pt
+cpu:
+    value: AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD
+cuda_available:
+    value: true
+cuda_version:
+    value: "12.6"
+dataset_start_date:
+    value: "2015-01-01"
+directional_accuracy:
+    value: 0.4287813176616146
+forecast_horizon:
+    value: 21
+gpu_compute_capability:
+    value: "8.9"
+gpu_device_index:
+    value: 0
+gpu_graphics_clock_mhz_max:
+    value: 210
+gpu_graphics_clock_mhz_mean:
+    value: 210
+gpu_graphics_clock_mhz_min:
+    value: 210
+gpu_memory_clock_mhz_max:
+    value: 405
+gpu_memory_clock_mhz_mean:
+    value: 405
+gpu_memory_clock_mhz_min:
+    value: 405
+gpu_memory_total_mb_max:
+    value: 8188
+gpu_memory_total_mb_mean:
+    value: 8188
+gpu_memory_total_mb_min:
+    value: 8188
+gpu_memory_used_mb_max:
+    value: 573.18359375
+gpu_memory_used_mb_mean:
+    value: 573.18359375
+gpu_memory_used_mb_min:
+    value: 573.18359375
+gpu_memory_utilization_percent_max:
+    value: 19
+gpu_memory_utilization_percent_mean:
+    value: 19
+gpu_memory_utilization_percent_min:
+    value: 19
+gpu_name:
+    value: NVIDIA GeForce RTX 4070 Laptop GPU
+gpu_power_watts_max:
+    value: 3.407
+gpu_power_watts_mean:
+    value: 3.407
+gpu_power_watts_min:
+    value: 3.407
+gpu_telemetry_sample_count:
+    value: 3
+gpu_temperature_c_max:
+    value: 46
+gpu_temperature_c_mean:
+    value: 46
+gpu_temperature_c_min:
+    value: 46
+gpu_total_memory_gb:
+    value: 7.996
+gpu_utilization_percent_max:
+    value: 25
+gpu_utilization_percent_mean:
+    value: 25
+gpu_utilization_percent_min:
+    value: 25
+latency_max_ms:
+    value: 2.7732000016840175
+latency_mean_ms:
+    value: 1.4566089999425458
+latency_median_ms:
+    value: 1.5677500014135148
+latency_min_ms:
+    value: 1.210700000228826
+latency_p95_ms:
+    value: 1.626665001094807
+latency_p99_ms:
+    value: 2.654498998235795
+lookback_window:
+    value: 252
+mae:
+    value: 0.10733821243047714
+mape:
+    value: 32.83242416381836
+model:
+    value: informer
+os:
+    value: Windows-11-10.0.26200-SP0
+parameter_count:
+    value: 79745
+peak_memory_allocated_mb:
+    value: 64.419921875
+peak_memory_reserved_mb:
+    value: 88
+precision:
+    value: fp16
+python:
+    value: 3.12.10
+repeat_index:
+    value: 2
+rmse:
+    value: 0.5925734043121338
+run_id:
+    value: 20260529-164244_tiny_time_mixer-informer_fp32-fp16_bs1-8-32
+system_ram_gb:
+    value: 15.288
+throughput_samples_per_sec:
+    value: 5102.854404584302
+ticker_count:
+    value: 25
+tickers:
+    value:
+        - AAPL
+        - MSFT
+        - NVDA
+        - AMD
+        - META
+        - GOOGL
+        - AMZN
+        - SPY
+        - QQQ
+        - DIA
+        - IWM
+        - JPM
+        - GS
+        - BAC
+        - XOM
+        - CVX
+        - SMH
+        - TSM
+        - VIXY
+        - ^NSEI
+        - RELIANCE.NS
+        - TCS.NS
+        - INFY.NS
+        - CQQQ
+        - FXI
+torch_version:
+    value: 2.12.0+cu126
+trained_epochs:
+    value: 6
+training_history_path:
+    value: checkpoints\informer_lb252_h21_in5_e30_2a00fcb3a7.history.json

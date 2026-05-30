@@ -27,6 +27,7 @@ class LocalLogger:
         record["run_id"] = self.run_id
         name = f"{record['run_id']}_{record['model']}_{record['backend']}_{record['precision']}_bs{record['batch_size']}_rep{record['repeat_index']}.json"
         path = self.raw_dir / name
+        path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("w", encoding="utf-8") as handle:
             json.dump(record, handle, indent=2, sort_keys=True)
         return path

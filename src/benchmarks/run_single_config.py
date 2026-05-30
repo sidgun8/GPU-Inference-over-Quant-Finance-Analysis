@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -27,6 +28,22 @@ def set_seed(seed: int) -> None:
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+
+
+def config_fingerprint(dataset_config: dict[str, Any], input_size: int, train_epochs: int) -> str:
+    payload = {
+        "tickers": dataset_config["tickers"],
+        "start_date": dataset_config["start_date"],
+        "end_date": dataset_config.get("end_date"),
+        "lookback_window": int(dataset_config["lookback_window"]),
+        "forecast_horizon": int(dataset_config["forecast_horizon"]),
+        "features": dataset_config["features"],
+        "target": dataset_config["target"],
+        "input_size": int(input_size),
+        "train_epochs": int(train_epochs),
+    }
+    encoded = json.dumps(payload, sort_keys=True).encode("utf-8")
+    return hashlib.sha1(encoded).hexdigest()[:10]
 
 
 def run_single_config(config: dict[str, Any], model_name: str, backend: str, precision: str, batch_size: int, repeat_index: int) -> dict[str, Any]:
@@ -58,18 +75,24 @@ def run_single_config(config: dict[str, Any], model_name: str, backend: str, pre
         lookback_window=int(dataset_config["lookback_window"]),
         hidden_size=int(config["models"]["hidden_size"]),
     )
+    train_epochs = int(config["models"].get("train_epochs", 1))
+    fingerprint = config_fingerprint(dataset_config, input_size, train_epochs)
     checkpoint_path = (
         Path(config["models"]["checkpoint_dir"])
-        / f"{model_name}_lb{int(dataset_config['lookback_window'])}_h{int(dataset_config['forecast_horizon'])}_in{int(input_size)}.pt"
+        / f"{model_name}_lb{int(dataset_config['lookback_window'])}_h{int(dataset_config['forecast_horizon'])}_in{int(input_size)}_e{train_epochs}_{fingerprint}.pt"
     )
-    model = train_or_load_model(
+    model, training_metadata = train_or_load_model(
         model=model,
         checkpoint_path=checkpoint_path,
         x_train=x_train,
         y_train=y_train,
         device=device,
         train_if_missing=bool(config["models"].get("train_if_missing", False)),
-        epochs=int(config["models"].get("train_epochs", 1)),
+        epochs=train_epochs,
+        validation_split=float(config["models"].get("validation_split", 0.15)),
+        early_stopping_patience=int(config["models"].get("early_stopping_patience", 5)),
+        early_stopping_min_delta=float(config["models"].get("early_stopping_min_delta", 0.0)),
+        save_training_history=bool(config["models"].get("save_training_history", True)),
     )
     cleanup_cuda(reset_memory_stats=config["benchmark"].get("reset_memory_stats_between_runs", True))
 
@@ -104,6 +127,9 @@ def run_single_config(config: dict[str, Any], model_name: str, backend: str, pre
         "lookback_window": int(dataset_config["lookback_window"]),
         "forecast_horizon": int(dataset_config["forecast_horizon"]),
         "tickers": dataset_config["tickers"],
+        "ticker_count": len(dataset_config["tickers"]),
+        "dataset_start_date": dataset_config["start_date"],
+        **training_metadata,
         **metrics,
         **get_hardware_metadata(),
     }

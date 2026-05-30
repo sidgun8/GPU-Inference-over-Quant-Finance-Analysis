@@ -1,0 +1,17 @@
+{
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "CPython 3.12.10",
+  "startedAt": "2026-05-29T13:27:54.345885Z",
+  "args": [
+    "--wandb"
+  ],
+  "program": "-m src.benchmarks.run_all",
+  "git": {
+    "commit": "7edd9ffdacb941521be32a13ae8a79910435843b"
+  },
+  "email": "siddharthsrinivasan2002@gmail.com",
+  "root": "C:\\Users\\sidsr\\GPUs for Financial Engineering",
+  "host": "Omen",
+  "executable": "C:\\Users\\sidsr\\GPUs for Financial Engineering\\.venv\\Scripts\\python.exe",
+  "writerId": "joof49y7leovgc8yvyp1g1pyl1769v64"
+}

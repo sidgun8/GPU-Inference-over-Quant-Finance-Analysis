@@ -1,7 +1,7 @@
 dataset:
   source: yfinance
-  tickers: [AAPL, ^NSEI, CQQQ, SPY, QQQ]
-  start_date: '2018-01-01'
+  tickers: [AAPL, MSFT, NVDA, AMD, META, GOOGL, AMZN, SPY, QQQ, DIA, IWM, JPM, GS, BAC, XOM, CVX, SMH, TSM, VIXY, ^NSEI, RELIANCE.NS, TCS.NS, INFY.NS, CQQQ, FXI]
+  start_date: '2015-01-01'
   end_date: null
   features: [Open, High, Low, Close, Volume]
   target: Close
@@ -10,11 +10,15 @@ dataset:
   train_split: 0.8
 
 models:
-  enabled: [lstm, transformer, tiny_time_mixer, informer]
+  enabled: [lstm, transformer]
   checkpoint_dir: checkpoints
   train_if_missing: true
-  train_epochs: 3
+  train_epochs: 30
   hidden_size: 64
+  validation_split: 0.15
+  early_stopping_patience: 30
+  early_stopping_min_delta: 0.0
+  save_training_history: true
 
 backends:
   enabled: [pytorch]
@@ -51,8 +55,8 @@ tracking:
     enabled: true
     results_dir: results
   wandb:
-    enabled: false
-    project: financial-transformer-inference
+    enabled: true
+    project: finalW&BKoreaUniAnalysis
     entity: null
     mode: online
     require_login: true
