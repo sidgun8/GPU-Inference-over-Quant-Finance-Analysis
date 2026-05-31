@@ -10,7 +10,7 @@ dataset:
   train_split: 0.8
 
 models:
-  enabled: [lstm, transformer]
+  enabled: [lstm, transformer, tiny_time_mixer, informer]
   checkpoint_dir: checkpoints
   train_if_missing: true
   train_epochs: 30
